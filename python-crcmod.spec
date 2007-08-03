@@ -1,16 +1,16 @@
 %define oname crcmod
 
-Summary:        Creates functions that efficiently compute CRC's using table lookup
 Name:           python-%{oname}
-Version:        1.3
+Version:        1.4
 Release:        %mkrel 1
 Epoch:          0
+Summary:        Creates functions that efficiently compute CRC's using table lookup
 URL:            http://crcmod.sourceforge.net/
-Source0:        http://crcmod.sourceforge.net/download/%{oname}-%{version}.tar.bz2
+Source0:        http://crcmod.sourceforge.net/download/%{oname}-%{version}.tar.gz
 License:        MIT
 Group:          Development/Python
 BuildRequires:  python-devel
-BuildRoot:      %{_tmppath}/%{name}-buildroot
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Create functions that efficiently compute the Cyclic Redundancy Check 
@@ -32,7 +32,7 @@ Features:
 %setup -q -n %{oname}-%{version}
 
 %build
-env CFLAGS="%{optflags}" %{_bindir}/python setup.py build
+CFLAGS="%{optflags}" %{_bindir}/python setup.py build
 
 %install
 %{__rm} -rf %{buildroot}
@@ -42,7 +42,6 @@ env CFLAGS="%{optflags}" %{_bindir}/python setup.py build
 %{__rm} -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
+%defattr(-,root,root,0755)
 %doc README changelog
-%{_libdir}/python%{pyver}/site-packages/%{oname}
-
+%{_libdir}/python%{pyver}/site-packages/*
