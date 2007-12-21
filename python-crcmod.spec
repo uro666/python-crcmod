@@ -10,6 +10,7 @@ Source0:        http://crcmod.sourceforge.net/download/%{oname}-%{version}.tar.g
 License:        MIT
 Group:          Development/Python
 BuildRequires:  python-devel
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Create functions that efficiently compute the Cyclic Redundancy Check 
