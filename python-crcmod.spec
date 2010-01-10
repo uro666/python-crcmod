@@ -1,8 +1,8 @@
 %define oname crcmod
 
 Name:           python-%{oname}
-Version:        1.4
-Release:        %mkrel 5
+Version:        1.5
+Release:        %mkrel 1
 Epoch:          0
 Summary:        Creates functions that efficiently compute CRC's using table lookup
 URL:            http://crcmod.sourceforge.net/
