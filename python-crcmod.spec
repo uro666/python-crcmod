@@ -1,16 +1,16 @@
 %define oname crcmod
 
 Name:           python-%{oname}
-Version:        1.6.1
+Version:        1.7
 Release:        %mkrel 1
 Epoch:          0
 Summary:        Creates functions that efficiently compute CRC's using table lookup
 URL:            http://crcmod.sourceforge.net/
-Source0:        http://crcmod.sourceforge.net/download/%{oname}-%{version}.tar.gz
+Source0:        http://sourceforge.net/projects/crcmod/files/crcmod/crcmod-%{versio}/crcmod-%{version}.tar.gz
 License:        MIT
 Group:          Development/Python
 BuildRequires:  python-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 Create functions that efficiently compute the Cyclic Redundancy Check 
