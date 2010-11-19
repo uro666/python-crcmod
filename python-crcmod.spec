@@ -2,7 +2,7 @@
 
 Name:           python-%{oname}
 Version:        1.7
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 Summary:        Creates functions that efficiently compute CRC's using table lookup
 URL:            http://crcmod.sourceforge.net/
