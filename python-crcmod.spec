@@ -5,7 +5,7 @@ Version:        1.7
 Release:        4
 Epoch:          0
 Summary:        Creates functions that efficiently compute CRC's using table lookup
-URL:            http://crcmod.sourceforge.net/
+URL:            https://crcmod.sourceforge.net/
 Source0:        http://sourceforge.net/projects/crcmod/files/crcmod/crcmod-%{versio}/crcmod-%{version}.tar.gz
 License:        MIT
 Group:          Development/Python
