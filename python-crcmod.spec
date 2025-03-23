@@ -1,15 +1,20 @@
+%global debug_package %{nil}
 %define oname crcmod
 
-Name:           python-%{oname}
-Version:        1.7
-Release:        4
-Epoch:          0
-Summary:        Creates functions that efficiently compute CRC's using table lookup
-URL:            https://crcmod.sourceforge.net/
-Source0:        http://sourceforge.net/projects/crcmod/files/crcmod/crcmod-%{versio}/crcmod-%{version}.tar.gz
-License:        MIT
-Group:          Development/Python
+Name:     python-%{oname}
+Version:  1.7
+Release:  5
+Epoch:    0
+Summary:  Creates functions that efficiently compute CRC's using table lookup
+URL:      https://crcmod.sourceforge.net/
+License:  MIT
+Group:    Development/Python
+Source0:  http://sourceforge.net/projects/crcmod/files/crcmod/crcmod-%{versio}/crcmod-%{version}.tar.gz
+Patch0:   crcmod-1.7-setuptools.patch
+BuildSystem:	python
+
 BuildRequires:  python-devel
+BuildRequires:  python-setuptools
 
 %description
 Create functions that efficiently compute the Cyclic Redundancy Check 
@@ -28,61 +33,16 @@ Features:
     * Forward and bit-reverse algorithms are supported.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%autosetup -p1 -n %{oname}-%{version}
 
 %build
-CFLAGS="%{optflags}" %{_bindir}/python setup.py build
+export CFLAGS="%{optflags}"
+%py_build
 
 %install
-%{_bindir}/python setup.py install --root=%{buildroot}
+%py3_install
 
 %files
 %defattr(-,root,root,0755)
 %doc README changelog
 %{_libdir}/python%{py_ver}/site-packages/*
-
-
-%changelog
-* Fri Nov 19 2010 Funda Wang <fwang@mandriva.org> 0:1.7-2mdv2011.0
-+ Revision: 598983
-- rebuild for py2.7
-
-* Sun Sep 12 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0:1.7-1mdv2011.0
-+ Revision: 577729
-- new version
-
-* Tue Mar 09 2010 Sandro Cazzaniga <kharec@mandriva.org> 0:1.6.1-1mdv2010.1
-+ Revision: 516848
-- update to 1.6.1
-
-* Mon Jan 11 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0:1.5-1mdv2010.1
-+ Revision: 489399
-- new version
-
-* Tue Sep 15 2009 Thierry Vignaud <tv@mandriva.org> 0:1.4-5mdv2010.0
-+ Revision: 442084
-- rebuild
-
-* Fri Aug 01 2008 Thierry Vignaud <tv@mandriva.org> 0:1.4-4mdv2009.0
-+ Revision: 259527
-- rebuild
-
-* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 0:1.4-3mdv2009.0
-+ Revision: 247397
-- rebuild
-
-* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0:1.4-1mdv2008.1
-+ Revision: 136447
-- restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-* Fri Aug 03 2007 David Walluck <walluck@mandriva.org> 0:1.4-1mdv2008.0
-+ Revision: 58731
-- 1.4
-
-
-* Tue Jul 25 2006 David Walluck <walluck@mandriva.com> 0:1.3-1mdv2007.0
-- release
-
