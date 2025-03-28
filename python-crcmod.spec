@@ -3,7 +3,7 @@
 
 Name:     python-%{oname}
 Version:  1.7
-Release:  5
+Release:  6
 Epoch:    0
 Summary:  Creates functions that efficiently compute CRC's using table lookup
 URL:      https://crcmod.sourceforge.net/
@@ -11,10 +11,11 @@ License:  MIT
 Group:    Development/Python
 Source0:  http://sourceforge.net/projects/crcmod/files/crcmod/crcmod-%{versio}/crcmod-%{version}.tar.gz
 Patch0:   crcmod-1.7-setuptools.patch
-BuildSystem:	python
+BuildSystem:  python
 
-BuildRequires:  python-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python%{pyver}dist(setuptools)
 
 %description
 Create functions that efficiently compute the Cyclic Redundancy Check 
@@ -41,6 +42,9 @@ export CFLAGS="%{optflags}"
 
 %install
 %py3_install
+
+%check
+%{__python} -m crcmod.test
 
 %files
 %defattr(-,root,root,0755)
